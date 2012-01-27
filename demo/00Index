@@ -1,0 +1,7 @@
+test1   Calculation of likelihood on a simple non-neighborhood model.
+test2   Calculation of likelihood where the model function calls two sub-functions.
+test3   Calculation of likelihood where the probability distribution function calls a sub-function.
+annealing1 Performs simulated annealing of a simple model.
+annealing2 Performs simulated annealing of the model in test3.
+annealing3 Unbounded (global) search of the model in test1.
+annealing4 Unbounded (global) search of the model in test3.
