@@ -13,7 +13,7 @@
 anneal(model, par, var, source_data, par_lo = NULL, par_hi = NULL, pdf, 
 dep_var, initial_temp = 3, temp_red = 0.95, ns = 20, nt = 100, 
 max_iter = 50000, min_change = 0, min_drops = 100, hessian = TRUE, 
-delta = 100, slimit = 2, note = "", ...)
+delta = 100, slimit = 2, note = "", show_display = TRUE, ...)
 }
 \arguments{
 \item{model}{Scientific model for whose parameters \code{anneal} will find
@@ -80,6 +80,7 @@ delta = 100, slimit = 2, note = "", ...)
   interval.}
 \item{note}{A note about the run.  This can be any character string.  This 
   will be written to output files by \code{\link{write_results}}.}
+\item{show_display}{Whether or not to show the progress display.}
 \item{\dots}{Any other data needed by \code{model}, \code{pdf}, or any other
   function to be called by \code{anneal}.  This is an alternative to providing
   the data in \code{var}; however, passing all values in \code{var} is strongly
@@ -239,7 +240,7 @@ the point where you stopped it.
 ## find maximum likelihood estimates of
 ## the parameters "a" and "b".
 ##
-
+\dontrun{
 library(likelihood)
 
 ## Set up our dataset
@@ -287,5 +288,6 @@ var <- list(x = "Radius",
             log = TRUE)
 results<-anneal(model = modelfun, par = par, var = var,
   source_data = dataset, par_lo = par_lo, par_hi = par_hi,
-  pdf = dnorm, dep_var = "Radius", max_iter = 20000)     
+  pdf = dnorm, dep_var = "Radius", max_iter = 20000)  
+}  
 }

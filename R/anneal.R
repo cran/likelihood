@@ -78,7 +78,7 @@
 anneal<-function(model, par, var, source_data, par_lo = NULL,
 par_hi = NULL, pdf, dep_var, initial_temp = 3, temp_red = 0.95,
 ns = 20, nt = 100, max_iter = 50000, min_change = 0, min_drops = 100,
-hessian = TRUE, delta = 100, slimit = 2, note = "", ...) {
+hessian = TRUE, delta = 100, slimit = 2, note = "", show_display = TRUE, ...) {
 
   ##
   ## Error checking
@@ -426,9 +426,11 @@ hessian = TRUE, delta = 100, slimit = 2, note = "", ...) {
 
   # Setup output display and show it for the first time
   # Create a window so likdisplay will default to showing the graphics
-  plot(x=1,y=1)
-  layout(matrix(c(1,2), 2, 1, byrow = TRUE)) # this makes a two-part graph
-  likdisplay(lhistcycles, lhisthood, slp, R2, aiccorr, temp, max_iter)
+  if (show_display) {
+    plot(x=1,y=1)
+    layout(matrix(c(1,2), 2, 1, byrow = TRUE)) # this makes a two-part graph
+    likdisplay(lhistcycles, lhisthood, slp, R2, aiccorr, temp, max_iter)
+  }
 
   tryCatch ({
     ##
@@ -570,7 +572,9 @@ hessian = TRUE, delta = 100, slimit = 2, note = "", ...) {
             lhistpar[[length(lhistpar) + 1]] <- temppar
             
             # Display
-            likdisplay(lhistcycles, lhisthood, slp, R2, aiccorr, temp, max_iter)
+            if (show_display) {
+              likdisplay(lhistcycles, lhisthood, slp, R2, aiccorr, temp, max_iter)
+            }
           }
         }
         else {
@@ -616,7 +620,9 @@ hessian = TRUE, delta = 100, slimit = 2, note = "", ...) {
           for (q in 1:length(parnames)) temppar[[parnames[q]]] <- best_par[[parnames[q]]]
           lhistpar[[length(lhistpar) + 1]] <- temppar
           # Update display
-          likdisplay(lhistcycles, lhisthood, slp, R2, aiccorr, temp, max_iter)
+          if (show_display) {
+            likdisplay(lhistcycles, lhisthood, slp, R2, aiccorr, temp, max_iter)
+          }
 
           # Check to see if likelihood has changed sufficiently to keep going,
           # if the user has specified alternate quitting conditions
@@ -636,7 +642,9 @@ hessian = TRUE, delta = 100, slimit = 2, note = "", ...) {
           temppar <- list()
           for (q in 1:length(parnames)) temppar[[parnames[q]]] <- best_par[[parnames[q]]]
           lhistpar[[length(lhistpar) + 1]] <- temppar
-          likdisplay(lhistcycles, lhisthood, slp, R2, aiccorr, temp, max_iter)
+          if (show_display) {
+            likdisplay(lhistcycles, lhisthood, slp, R2, aiccorr, temp, max_iter)
+          }
         }
 
         if (using == numpars) using <- 1 else using <- using + 1
@@ -666,7 +674,9 @@ hessian = TRUE, delta = 100, slimit = 2, note = "", ...) {
     for (q in 1:length(parnames)) temppar[[parnames[q]]] <- best_par[[parnames[q]]]
     lhistpar[[length(lhistpar)]] <- temppar
     lhisttemp[length(lhisttemp)] <- temp
-    likdisplay(lhistcycles, lhisthood, slp, R2, aiccorr, temp, max_iter)
+    if (show_display) {
+      likdisplay(lhistcycles, lhisthood, slp, R2, aiccorr, temp, max_iter)
+    }
 
   }, finally={
 
@@ -770,7 +780,8 @@ hessian = TRUE, delta = 100, slimit = 2, note = "", ...) {
     }
 
     # To reduce var to manageable size, remove any data frames
-    for (i in 1:length(var)) {if (is.data.frame(var[[i]])) var[[i]]<-"[dataset removed]" }
+    if (length(var) > 0)
+      for (i in 1:length(var)) {if (is.data.frame(var[[i]])) var[[i]]<-"[dataset removed]" }
        
     parhistory <- array(dim=c(length(lhistpar),length(par_lo)))
     colnames(parhistory)<-names(par_lo)

@@ -1,13 +1,14 @@
 Package: likelihood
-Version: 1.5
+Version: 1.6
 Title: Methods for maximum likelihood estimation
-Date: 2012-01-27
+Date: 2014-06-24
 Author: Lora Murphy <murphyl@caryinstitute.org>
 Maintainer: Lora Murphy <murphyl@caryinstitute.org>
-Description: Tools for maximum likelihood estimation of parameters of
-        scientific models.
+Description: Tools for maximum likelihood estimation of parameters 
+  of scientific models.
 Depends: R (>= 2.1.1), nlme
 License: GPL-2
-Packaged: 2012-02-06 14:53:24 UTC; lora
+Packaged: 2014-06-27 13:23:14 UTC; LORA
+NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2012-02-06 16:53:55
+Date/Publication: 2014-06-27 16:09:01

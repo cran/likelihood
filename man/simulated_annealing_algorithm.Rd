@@ -83,7 +83,7 @@ where \eqn{exp_i}{expi} is the expected value of observation i in the dataset (\
 
 \bold{R2.}  \eqn{R^2}{R2} (different from \eqn{r^2}{r2}) is the proportion of variance explained by the model relative to that explained by the simple mean of the data. It is not bounded between 0 and 1. It is calculated as:
 
-\deqn{R^2 = 1-\frac{SSE}{SST} = 1 - \frac{\sum_{i=1}^{N}(obs_{i}-exp_{i}^2)}{\sum_{i=1}^{N}(obs_{i}-\overline{obs})^2}}{R2 = 1 - SSE/SST = 1 - [\sum(i=1\dots N) (obsi * expi)^2 \ \sum(i=1\dots N) (obsi * mean(obs))2]}
+\deqn{R^2 = 1-\frac{SSE}{SST} = 1 - \frac{\sum_{i=1}^{N}(obs_{i}-exp_{i})^2}{\sum_{i=1}^{N}(obs_{i}-\overline{obs})^2}}{R2 = 1 - SSE/SST = 1 - [\sum(i=1\dots N) (obsi - expi)^2 \ \sum(i=1\dots N) (obsi - mean(obs))^2]}
 
  
 where \eqn{exp_i}{expi} is the expected value of observation i in the dataset (\eqn{obs_i}{obsi}) given the model, and \eqn{\overline{obs_i}}{mean(obs)} is the mean of the observations.

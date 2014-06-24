@@ -1,2 +1,3 @@
 #functions
 export(anneal, likeli, likeli_4_optim, predicted_results, support_limits, write_results)
+importFrom(nlme, fdHess)

@@ -75,23 +75,26 @@ write_results<-function(results, filename, data=TRUE, print_whole_hist=FALSE) {
 
   cat("\nNon-varying parameters:\n", sep="", file = out)
   cat("Label\tValue\n", sep = "", file=out)
-  for (i in 1:length(results$var)) {
-    if (mode(results$var[[i]]) == "function")
+  if (length(var) == 0) cat("[None]", sep = "", file=out)
+  else {
+    for (i in 1:length(results$var)) {
+      if (mode(results$var[[i]]) == "function")
       cat(names(results$var)[[i]], "[function]", "\n", sep = "\t", file = out)
-    else if (mode(results$var[[i]]) == "list") {
-      for (j in 1:length(results$var[[i]])) {
-        cat(paste(names(results$var)[[i]],"$",names(results$var[[i]])[[j]],sep=""),
-           results$var[[i]][[j]], "\n",
-           sep = "\t", file = out)
+      else if (mode(results$var[[i]]) == "list") {
+        for (j in 1:length(results$var[[i]])) {
+          cat(paste(names(results$var)[[i]],"$",names(results$var[[i]])[[j]],sep=""),
+          results$var[[i]][[j]], "\n",
+          sep = "\t", file = out)
+        }
       }
-    }
-    else if (length(results$var[[i]]) == 1)
+      else if (length(results$var[[i]]) == 1)
       cat(names(results$var)[[i]], results$var[[i]], "\n", sep = "\t", file = out)
-    else {
-      for (j in 1:length(results$var[[i]])) {
-         cat(paste(names(results$var)[[i]],j,sep=""),
-           results$var[[i]][[j]], "\n",
-           sep = "\t", file = out)
+      else {
+        for (j in 1:length(results$var[[i]])) {
+          cat(paste(names(results$var)[[i]],j,sep=""),
+          results$var[[i]][[j]], "\n",
+          sep = "\t", file = out)
+        }
       }
     }
   }
