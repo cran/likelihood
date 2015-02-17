@@ -307,6 +307,7 @@ hessian = TRUE, delta = 100, slimit = 2, note = "", show_display = TRUE, ...) {
   slp <- NULL                 # slope of observed regressed on predicted
   sumx2 <- NULL               # used for calculating slp
   sumxy <- NULL               # used for calculating slp
+  temp_hist_inds <- 1         # indexes in likelihood history of each temperature reduction
 
   # Calculate the initial search interval, which for each parameter is the
   # greater distance between the initial value and the upper and lower bound
@@ -613,6 +614,7 @@ hessian = TRUE, delta = 100, slimit = 2, note = "", show_display = TRUE, ...) {
           # NOTE:  Goffe et al. restart the search at the current best fit each
           # time the temperature drops, but I (CDC) generally don't do this
           # Store current maximum lhood in history list
+          temp_hist_inds <- c(temp_hist_inds, length(lhisthood) + 1) 
           lhisttemp[length(lhisttemp)+1] <- temp
           lhistcycles[length(lhistcycles) + 1] <- cycles / numpars
           lhisthood[length(lhisthood) + 1] <- best_lh
@@ -626,8 +628,9 @@ hessian = TRUE, delta = 100, slimit = 2, note = "", show_display = TRUE, ...) {
 
           # Check to see if likelihood has changed sufficiently to keep going,
           # if the user has specified alternate quitting conditions
-          if (length(lhisthood) >= min_drops+1) {
-            if (lhisthood[length(lhisthood)] - lhisthood[length(lhisthood) - min_drops] < min_change) {
+          #if (length(lhisthood) >= min_drops+1) {
+          if (length(temp_hist_inds) >= min_drops+1) {
+            if (lhisthood[length(lhisthood)] - lhisthood[temp_hist_inds[length(temp_hist_inds) - min_drops]] < min_change) {
               iterate <- FALSE
             }
           }

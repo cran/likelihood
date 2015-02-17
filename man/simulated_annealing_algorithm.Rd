@@ -16,7 +16,7 @@ You begin an annealing run by setting up the annealing schedule and the paramete
 \itemize{
   \item{Initial temperature (\var{t}).}{ The higher the temperature, the more energetic the search.}
   \item{Rate of reduction in temperature (\var{rt}).}{ This controls how quickly the temperature falls throughout the run.}
-  \item{Interval between drops in temperature (\var{nt}).}{ This controls how long the search stays at a certain temperature before further cooling.}
+  \item{Rate of drops in temperature (\var{nt}).}{ This controls how long the search stays at a certain temperature before further cooling.}
   \item{Interval between changes in range (\var{ns}).}{ This controls how often the annealing process adjusts the parameter search range.}
 \item{An end point to the search.}{ This is generally a maximum number of search iterations.}
 }
@@ -41,7 +41,7 @@ where \var{p} is the probability the move will be accepted, \var{L1} is the prev
 
 The parameter values are randomly chosen within a range. The search begins with any defined upper and lower bounds, or infinity if there are none. Every \var{ns} iterations (where \var{ns} is the interval between changes in range in the initial annealing schedule), simulated annealing adjusts its search bounds for each parameter so that 50\% of all moves will be accepted, either enlarging the bounds to find new ground to search or shrinking them to narrow in on a maximum. 
 
-After \var{ns} * \var{nt} iterations (where \var{nt} is the interval between drops in temperature in the initial annealing schedule), the temperature \var{T} drops as 
+After \var{ns} * \var{nt} iterations, the temperature \var{T} drops as 
 
 \deqn{T'= rt * T}
 

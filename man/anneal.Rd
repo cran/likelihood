@@ -53,8 +53,8 @@ delta = 100, slimit = 2, note = "", show_display = TRUE, ...)
   than 1).}
 \item{ns}{Number of iterations between changes in parameter search ranges. One
   iteration varies all parameters one time.}
-\item{nt}{Number of iterations between drops in temperature. One iteration
-  varies all parameters one time.}
+\item{nt}{Controls number of iterations between drops in temperature. Temperature
+  drops occur at nt * ns iterations. One iteration varies all parameters one time.}
 \item{max_iter}{Maximum number of iterations to perform. One iteration varies
   all parameters one time.}
 \item{min_change}{An alternate (and optional) way to specify quitting

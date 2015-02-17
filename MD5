@@ -1,7 +1,7 @@
-aea5e92760d3053d705acfe626e23f53 *DESCRIPTION
+5f3996cd0951e328f84784d60e499fc3 *DESCRIPTION
 73a166509aa398fa8a767af373c023fc *NAMESPACE
 7bde48eb6ade51c933624df94884a154 *R/analyze_function.R
-9464b78981ea6a6cecf162e140b4351d *R/anneal.R
+a32cabb6add9e15e19a1ba6b09bc0569 *R/anneal.R
 f59a352023178233804468105539b9be *R/likdisplay.R
 25a0825fd324e37f69070ab3792b2135 *R/likeli.R
 76ce3b4bd71774925603841ba78ef447 *R/likeli_4_fdHess.R
@@ -20,7 +20,7 @@ cf20e21758f5913e8a2a2c6fd7c11c49 *data/from_sortie.txt.gz
 edd9d68266b0b2ceae949f705f17266f *demo/test1.R
 53b5764e62eeb98c253bf6e92a28c9a3 *demo/test2.R
 485783439c01cb259b5e70350dedf872 *demo/test3.R
-844d64fad1dad8f20102b7fc3021a2cd *man/anneal.Rd
+1f0736f921d43023ec331e4dac011796 *man/anneal.Rd
 0a1c20f3df0ed6b5761d4d8a8174f9ad *man/crown_rad.Rd
 62c50d8aa28cb64e3cd75433481fa01a *man/from_sortie.Rd
 afad204044daec84428558c0324850dc *man/likeli.Rd
@@ -28,6 +28,6 @@ afad204044daec84428558c0324850dc *man/likeli.Rd
 0845960a7b0528350d0610ff22028152 *man/likelihood-package.Rd
 f846e3506948f52fea7624773c5b4beb *man/likelihood_calculation.Rd
 36c19e9ee3a0a6fdf7804cbbc98490f6 *man/predicted_results.Rd
-e7563c172f9a90c36adf9a306a357bf7 *man/simulated_annealing_algorithm.Rd
+4cc298ad5cfae33cc75db93a4c3a3f5a *man/simulated_annealing_algorithm.Rd
 99c08ea5f26f4e8930bc539d3b97454c *man/support_limits.Rd
 8e0c23b76acb82407ac03ee707f3c1dd *man/write_results.Rd
