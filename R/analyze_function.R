@@ -93,12 +93,21 @@ analyze_function<-function(fun, par, parname, datasets, ...) {
 
           if (is.character(par$value[used][[1]])) {
 
+            done <- FALSE
+
+            # RESERVED WORDS: "predicted", for model results, and "using",
+            # for parameter number
             # Check to see if this is referencing the predicted value
             if (par$value[used][[1]]=="predicted") {
               results$call[[fun_args[[i]]]]<-quote(predicted)
+              done <- TRUE
             } 
-
-            else {
+            # Add "using" as an option if desired
+            if (par$value[used][[1]]=="using") {
+              results$call[[fun_args[[i]]]]<-quote(using)
+              done <- TRUE
+            }
+            if (!done) {   
 
               # If the function argument expects a character value, pass as-is
               if (mode(default_checker[[i]]) == "character") {

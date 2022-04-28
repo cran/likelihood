@@ -35,7 +35,7 @@ Each time simulated annealing picks a new parameter value to test, it must decid
  
 If the new parameter value's likelihood is worse than the previous one (representing a step downhill), simulated annealing uses the Metropolis criterion to decide whether or not to accept the move. The criterion is:
 
-\deqn{p = e^{-\frac{L1 - L2}{t}}}{p = exp(L1 - L2)/T}
+\deqn{p = e^{-\frac{L1 - L2}{t}}}{p = exp(-(L1 - L2)/T)}
 
 where \var{p} is the probability the move will be accepted, \var{L1} is the previous likelihood, \var{L2} is the new likelihood, and \var{T} is the current annealing temperature. The algorithm compares a random number to this probability. If the move is accepted, the algorithm steps downhill. If the move is rejected, the new parameter value is discarded and the search stays in the same place, to try a step in a different direction with the next parameter.
 

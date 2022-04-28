@@ -39,7 +39,9 @@
 ########################################################
 support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
    par_hi = NULL, delta = 100, slimit = 2) {
-
+  
+  threshold_for_error <- 0.0001
+  
   # Check that par_lo and par_hi have corresponding labels in par,
   # and replace missing values with "infinity"
   if (is.null(par_lo)) {
@@ -108,7 +110,9 @@ support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
       lhood <- likeli(model, par, var, source_data, pdf)
       if (is.infinite(lhood) || is.nan(lhood) || is.na(lhood)) lhood <- bad_likeli
       lhdiff <- best_lh - lhood
-
+      if (lhdiff < 0 && abs(lhdiff) > threshold_for_error) { 
+        stop("Best likelihood not in fact the best. Par #", i, "sub", j, "name", names(par)[i][j])        
+      }
       if (!is.nan(lhdiff) && !is.na(lhdiff) && lhdiff < slimit) {
         upper_limit[[i]][[j]] <- par_hi[[i]][[j]]
       }
@@ -132,6 +136,9 @@ support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
             lhood <- likeli(model, par, var, source_data, pdf)
             if (is.infinite(lhood) || is.nan(lhood) || is.na(lhood)) lhood <- bad_likeli
             lhdiff <- best_lh - lhood
+            if (lhdiff < 0 && abs(lhdiff) > threshold_for_error) { 
+              stop("Best likelihood not in fact the best. Par #", i, "sub", j, "name", names(par)[i][j])
+            }
           }
 
           # Step back once so we can search more finely on
@@ -157,6 +164,9 @@ support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
             lhood <- likeli(model, par, var, source_data, pdf)
             if (is.infinite(lhood) || is.nan(lhood) || is.na(lhood)) lhood <- bad_likeli
             lhdiff <- best_lh - lhood
+            if (lhdiff < 0 && abs(lhdiff) > threshold_for_error) { 
+              stop("Best likelihood not in fact the best. Par #", i, "sub", j, "name", names(par)[i][j])
+            }
           }
         }
         
@@ -200,6 +210,9 @@ support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
             lhood <- likeli(model, par, var, source_data, pdf)
             if (is.infinite(lhood) || is.nan(lhood) || is.na(lhood)) lhood <- bad_likeli
             lhdiff <- best_lh - lhood
+            if (lhdiff < 0 && abs(lhdiff) > threshold_for_error) { 
+              stop("Best likelihood not in fact the best. Par #", i, "sub", j, "name", names(par)[i][j])
+            }
           }
 
           # Step back once so we can search more finely on
@@ -224,14 +237,16 @@ support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
             lhood <- likeli(model, par, var, source_data, pdf)
             if (is.infinite(lhood) || is.nan(lhood) || is.na(lhood)) lhood <- bad_likeli
             lhdiff <- best_lh - lhood
+            if (lhdiff < 0 && abs(lhdiff) > threshold_for_error) { 
+              stop("Best likelihood not in fact the best. Par #", i, "sub", j, "name", names(par)[i][j])
+            }
           }
         }
           
         lower_limit[[i]][[j]] <- par[[i]][[j]]+step
-
-        # Set the parameter back to the optimum
-        par[[i]][[j]] <- par_copy
       }
+      # Set the parameter back to the optimum
+      par[[i]][[j]] <- par_copy
     } # end of parameter loop
   }
 

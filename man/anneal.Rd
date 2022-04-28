@@ -13,7 +13,7 @@
 anneal(model, par, var, source_data, par_lo = NULL, par_hi = NULL, pdf, 
 dep_var, initial_temp = 3, temp_red = 0.95, ns = 20, nt = 100, 
 max_iter = 50000, min_change = 0, min_drops = 100, hessian = TRUE, 
-delta = 100, slimit = 2, note = "", show_display = TRUE, ...)
+delta = 100, slimit = 2, c = 2, note = "", show_display = TRUE, ...)
 }
 \arguments{
 \item{model}{Scientific model for whose parameters \code{anneal} will find
@@ -78,6 +78,10 @@ delta = 100, slimit = 2, note = "", show_display = TRUE, ...)
   optimum likelihood for which to search the parameter ranges. 2 units is 
   standard.  1.92 units corresponds roughly to a 95 percent confidence 
   interval.}
+\item{c}{Controls the reduction in parameter search range. A value of 0 would
+  keep the search range permanently between the values set in \code{par_lo} and
+  \code{par_hi}. A higher value will restrict the search more when range
+  adjustments are made. A value of 2 is recommended by Goffe.}
 \item{note}{A note about the run.  This can be any character string.  This 
   will be written to output files by \code{\link{write_results}}.}
 \item{show_display}{Whether or not to show the progress display.}

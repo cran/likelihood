@@ -65,6 +65,8 @@
 # units less than the optimum likelihood for which the support intervals
 # will be calculated.  2 units is semi-standard.  1.92 units corresponds
 # roughly to a 95% confidence interval.
+# 
+# c = range reduction parameter
 #
 # note = any note to self the user wants to make.  This will be
 # included in the output.
@@ -78,7 +80,7 @@
 anneal<-function(model, par, var, source_data, par_lo = NULL,
 par_hi = NULL, pdf, dep_var, initial_temp = 3, temp_red = 0.95,
 ns = 20, nt = 100, max_iter = 50000, min_change = 0, min_drops = 100,
-hessian = TRUE, delta = 100, slimit = 2, note = "", show_display = TRUE, ...) {
+hessian = TRUE, delta = 100, slimit = 2, c = 2, note = "", show_display = TRUE, ...) {
 
   ##
   ## Error checking
@@ -598,8 +600,8 @@ hessian = TRUE, delta = 100, slimit = 2, note = "", show_display = TRUE, ...) {
               # C controls the adjustment of range - references suggest
               # setting at 2.0.  I've hard-coded the 2 since Charlie doesn't
               # seem to allow setting it anywhere.
-              if (ratio > 0.6) par_step[[i]] <- par_step[[i]] * (1.0 + 2*((ratio - 0.6)/0.4))
-                else {if (ratio < 0.4) par_step[[i]] <- par_step[[i]] / (1.0+2*((0.4 - ratio)/0.4))}
+              if (ratio > 0.6) par_step[[i]] <- par_step[[i]] * (1.0 + c*((ratio - 0.6)/0.4))
+                else {if (ratio < 0.4) par_step[[i]] <- par_step[[i]] / (1.0+c*((0.4 - ratio)/0.4))}
               if (is.infinite(par_step[[i]])) par_step[[i]] = .Machine$double.xmax
               if (par_step[[i]] > (par_hi[[i]] - par_lo[[i]])) par_step[[i]] <- par_hi[[i]] - par_lo[[i]]
             }
@@ -802,7 +804,7 @@ hessian = TRUE, delta = 100, slimit = 2, note = "", show_display = TRUE, ...) {
     initial_temp = initial_temp, temp_red = temp_red, ns = ns, nt = nt,
     pdf = pdfname, note = note, model=model_name, std_errs = std_errs,
     var_covar_mat = var_covar_mat, max_likeli = best_lh, aic_corr = aiccorr,
-    aic = (-2.0*best_lh) + (2*numpars), slope = slp, R2 = R2,
+    aic = (-2.0*best_lh) + (2*numpars), slope = slp, R2 = R2, c = c,
     likeli_hist = data.frame(temp = lhisttemp, iter = lhistcycles, likeli = lhisthood, parhistory)))}
   )
 }
