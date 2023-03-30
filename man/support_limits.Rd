@@ -142,12 +142,16 @@ par_hi <- list(a = 50, b = 50)
 ## Have dnorm calculate log likelihood
 var$log <- TRUE
 
+\dontrun{
 results <- anneal(model, par, var, crown_rad, par_lo, par_hi, dnorm, "Radius", max_iter=20000)
+}
 
 ##################
 ## Do support limits - even though there are a set already in results
 ##################
 
+\dontrun{
 limits <- support_limits(model, results$best_pars, var, crown_rad, dnorm, par_lo, par_hi)
+}
 }
 

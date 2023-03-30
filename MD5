@@ -1,4 +1,4 @@
-6d1ca573a01cbac029380e7270fe10ff *DESCRIPTION
+4e43484588e87a504cf4f7c9660a7b0b *DESCRIPTION
 ed7c9605bc667794aae5aa78c99968b1 *NAMESPACE
 631125a743fc49d7af6bbbb9c2c91ec9 *R/analyze_function.R
 3a112061a2471f4cd9ecb99e0a20f8cd *R/anneal.R
@@ -8,7 +8,7 @@ f59a352023178233804468105539b9be *R/likdisplay.R
 5ecfd6800d6fc51c727375dae32e0d8e *R/likeli_4_optim.R
 321a5ec34946ad24df23cd74bc8b479a *R/predicted_results.R
 ab6626fd13b40daa1a7eeebdd2b85ef5 *R/process_pre_eval.R
-49d03b3a86d7e27c7b349732a02d364a *R/support_limits.R
+32d39410188c31c63258eb7c93dab883 *R/support_limits.R
 16951dd4e30e217514f8837455532acc *R/write_results.R
 78ea1a936f162cfa847912eeb130aedb *data/crown_rad.txt.gz
 cf20e21758f5913e8a2a2c6fd7c11c49 *data/from_sortie.txt.gz
@@ -20,14 +20,14 @@ ae2ae07b67f1e33289f65f80e2dba396 *demo/00Index
 edd9d68266b0b2ceae949f705f17266f *demo/test1.R
 53b5764e62eeb98c253bf6e92a28c9a3 *demo/test2.R
 485783439c01cb259b5e70350dedf872 *demo/test3.R
-a941f329d981be73d2fd43baefaf5ba6 *man/anneal.Rd
+d340d2c970cbb3e1d335e4a04c891e58 *man/anneal.Rd
 0a1c20f3df0ed6b5761d4d8a8174f9ad *man/crown_rad.Rd
 62c50d8aa28cb64e3cd75433481fa01a *man/from_sortie.Rd
 afad204044daec84428558c0324850dc *man/likeli.Rd
-894d97e835f2adf2f9ab9764479208e8 *man/likeli_4_optim.Rd
+d468826ae42035c082f82fb6e1632cff *man/likeli_4_optim.Rd
 0845960a7b0528350d0610ff22028152 *man/likelihood-package.Rd
 f846e3506948f52fea7624773c5b4beb *man/likelihood_calculation.Rd
 36c19e9ee3a0a6fdf7804cbbc98490f6 *man/predicted_results.Rd
 c15f4dafdc05ea27e523e9df63bc1011 *man/simulated_annealing_algorithm.Rd
-99c08ea5f26f4e8930bc539d3b97454c *man/support_limits.Rd
+c448dce0ecf14e604e28405d323f3e5f *man/support_limits.Rd
 8e0c23b76acb82407ac03ee707f3c1dd *man/write_results.Rd

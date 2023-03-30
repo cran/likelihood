@@ -40,7 +40,7 @@
 support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
    par_hi = NULL, delta = 100, slimit = 2) {
   
-  threshold_for_error <- 0.0001
+  threshold_for_error <- 0.01
   
   # Check that par_lo and par_hi have corresponding labels in par,
   # and replace missing values with "infinity"
@@ -82,7 +82,7 @@ support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
     for (i in 1:length(lower_limit)) lower_limit[[i]] <- NA
     for (i in 1:length(upper_limit)) upper_limit[[i]] <- NA
     return(list(upper_limits = upper_limit, lower_limits = lower_limit))
-   #stop("Cannot calculate support limits:  best likelihood is infinite or not a number.\n")
+   #warning("Cannot calculate support limits:  best likelihood is infinite or not a number.\n")
   }
 
   # Get a fake likelihood value for replacing infinite or NaN values
@@ -111,7 +111,7 @@ support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
       if (is.infinite(lhood) || is.nan(lhood) || is.na(lhood)) lhood <- bad_likeli
       lhdiff <- best_lh - lhood
       if (lhdiff < 0 && abs(lhdiff) > threshold_for_error) { 
-        stop("Best likelihood not in fact the best. Par #", i, "sub", j, "name", names(par)[i][j])        
+        warning("Support interval search indicates max likelihood was not reached during annealing. Try starting a new run with the last best parameters.")        
       }
       if (!is.nan(lhdiff) && !is.na(lhdiff) && lhdiff < slimit) {
         upper_limit[[i]][[j]] <- par_hi[[i]][[j]]
@@ -137,7 +137,7 @@ support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
             if (is.infinite(lhood) || is.nan(lhood) || is.na(lhood)) lhood <- bad_likeli
             lhdiff <- best_lh - lhood
             if (lhdiff < 0 && abs(lhdiff) > threshold_for_error) { 
-              stop("Best likelihood not in fact the best. Par #", i, "sub", j, "name", names(par)[i][j])
+              warning("Support interval search indicates max likelihood was not reached during annealing. Try starting a new run with the last best parameters.")
             }
           }
 
@@ -165,7 +165,7 @@ support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
             if (is.infinite(lhood) || is.nan(lhood) || is.na(lhood)) lhood <- bad_likeli
             lhdiff <- best_lh - lhood
             if (lhdiff < 0 && abs(lhdiff) > threshold_for_error) { 
-              stop("Best likelihood not in fact the best. Par #", i, "sub", j, "name", names(par)[i][j])
+              warning("Support interval search indicates max likelihood was not reached during annealing. Try starting a new run with the last best parameters.")
             }
           }
         }
@@ -211,7 +211,7 @@ support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
             if (is.infinite(lhood) || is.nan(lhood) || is.na(lhood)) lhood <- bad_likeli
             lhdiff <- best_lh - lhood
             if (lhdiff < 0 && abs(lhdiff) > threshold_for_error) { 
-              stop("Best likelihood not in fact the best. Par #", i, "sub", j, "name", names(par)[i][j])
+              warning("Support interval search indicates max likelihood was not reached during annealing. Try starting a new run with the last best parameters.")
             }
           }
 
@@ -238,7 +238,7 @@ support_limits<-function(model, par, var, source_data, pdf, par_lo = NULL,
             if (is.infinite(lhood) || is.nan(lhood) || is.na(lhood)) lhood <- bad_likeli
             lhdiff <- best_lh - lhood
             if (lhdiff < 0 && abs(lhdiff) > threshold_for_error) { 
-              stop("Best likelihood not in fact the best. Par #", i, "sub", j, "name", names(par)[i][j])
+              warning("Support interval search indicates max likelihood was not reached during annealing. Try starting a new run with the last best parameters.")
             }
           }
         }

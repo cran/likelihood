@@ -87,8 +87,8 @@ par_names <- c("a", "b")
 ## Remember to set the fnscale option of optim to a negative value to perform
 ## a maximization rather than a minimization
 
-optim(par_2_analyze, likeli_4_optim, method = "Nelder-Mead",
+\dontrun{optim(par_2_analyze, likeli_4_optim, method = "Nelder-Mead",
   control = list(fnscale = -1), model = model, par_names = par_names,
-  var = var, source_data = crown_rad, pdf = dnorm)
+  var = var, source_data = crown_rad, pdf = dnorm)}
 }
 

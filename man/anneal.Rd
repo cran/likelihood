@@ -292,6 +292,6 @@ var <- list(x = "Radius",
             log = TRUE)
 results<-anneal(model = modelfun, par = par, var = var,
   source_data = dataset, par_lo = par_lo, par_hi = par_hi,
-  pdf = dnorm, dep_var = "Radius", max_iter = 20000)  
+  pdf = dnorm, dep_var = "Radius", max_iter = 20000)
 }  
 }
